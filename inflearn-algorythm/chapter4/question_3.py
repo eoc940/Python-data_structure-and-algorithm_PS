@@ -62,12 +62,10 @@ maxx = max(music)
 lt = 1
 rt = sum(music)
 res = 0
-b = list()
 while lt<=rt :
     mid =(lt+rt)//2
     if mid >= maxx and count(mid) <= m :
         res = mid
-        b.append(res)
         rt = mid-1
     else:
         lt = mid+1
