@@ -1,2 +1,4 @@
-nums = [x+1 for x in range(6)]
-print(nums)
+
+
+subjects = [input() for _ in range(3)]
+print(subjects)
