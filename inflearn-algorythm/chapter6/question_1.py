@@ -22,7 +22,7 @@ def DFS(x) :
 if __name__ == "__main__" :
     n = int(input())
     DFS(n)
-'''
+
 
 # 강사님 풀이
 
@@ -36,4 +36,44 @@ def DFS(x) :
 
 n = int(input())
 DFS(n)
+'''
+
+
+# 다시 풀기
+
+def DFS(v) :
+    if n==0:
+        return
+    else:
+        DFS(v//2)
+        print(v%2 , end=" ")
+
+
+n = int(input())
+DFS(n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
