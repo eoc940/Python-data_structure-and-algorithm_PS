@@ -24,7 +24,7 @@ for i in range(1,n) :
     b[i] = b[i-1]*(n-i)//i  # 콤비네이션 구하는 방법
 
 DFS(0,0)
-'''
+
 
 def DFS(L, sum) :
     if L==n and sum==f :
@@ -49,3 +49,15 @@ ch = [0]*(n+1)
 for i in range(1, n) :
     b[i] = b[i-1]*(n-i)//i
 DFS(0,0)
+'''
+import itertools as it
+n, f = map(int, input().split())
+b = [1]*n
+cnt = 0
+for i in range(1, n):
+    b[i] = b[i-1]*(n-i)/i
+a=list(range(1,n+1))
+for tmp in it.permutations(a,3):
+    print(tmp)
+    cnt+=1
+print(cnt)
