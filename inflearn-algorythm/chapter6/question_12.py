@@ -12,5 +12,7 @@ for j in range(n) :
         print(res[j][k], end=" ")
     print()
 
+# 강사님 풀이
+
 
 
