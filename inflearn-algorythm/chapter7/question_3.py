@@ -4,7 +4,7 @@
 # 리스트에서 remove연산하는 것보다
 # set을 따로 만들어서 list와 비교하는 것이
 # 연산속도가 빠르다!!!
-
+'''
 def DFS(v, sum) :
     global res
     ######### 1 #########
@@ -34,4 +34,50 @@ DFS(0,0)
 # print(len(s))
 ####### 2 #######
 print(sum(w) - len(res))
+'''
+
+
+
+
+
+
+
+# 다시풀기
+
+def DFS(L, sum) :
+    if L==k:
+        if 0 < sum <= s :
+            possible.add(sum)
+        return
+    else :
+        DFS(L+1, sum + weight[L])
+        DFS(L+1, sum - weight[L])
+        DFS(L+1, sum)
+
+k = int(input())
+weight = list(map(int, input().split()))
+possible = set()
+s = sum(weight)
+DFS(0, 0)
+print(s - len(possible))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
