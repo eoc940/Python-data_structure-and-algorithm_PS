@@ -41,7 +41,7 @@ for i in range(len(alphabet)) :
 DFS(0)
 print(cnt)
 
-'''
+
 # 강사님 풀이
 
 def DFS(L,p) :
@@ -63,7 +63,7 @@ def DFS(L,p) :
 
 code=list(map(int, input()))
 n = len(code)
-code.insert(n,-1)
+code.insert(n,-1) # 반복문 인덱스 처리하기 싫을 때 쓰자
 
 alpha = dict()
 key = 1
@@ -72,3 +72,70 @@ res = [0]*(n+3)
 
 DFS(0,0)
 print(cnt)
+'''
+
+
+# 다시풀기
+
+def DFS(L, p) :
+    global cnt
+    if L==n :
+        for i in range(p) :
+            print(chr(res[i]+64), end="")
+        print()
+        cnt+=1
+    else :
+        for i in range(1,27) :
+            if code[L]==i :
+                res[p] = i
+                DFS(L+1, p+1)
+            elif i>=10 and code[L]==i//10 and code[L+1]==i%10 :
+                res[p] = i
+                DFS(L+2, p+1)
+
+
+code = list(map(int, input()))
+n = len(code)
+code.append(-1)
+cnt = 0
+res = [0]*(n+3)
+DFS(0,0)
+print(cnt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
