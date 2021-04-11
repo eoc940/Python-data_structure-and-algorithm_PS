@@ -34,7 +34,7 @@ for x in res :
 
 
 # 다시풀기
-'''
+
 def DFS(x,y) :
     global cnt
     a[x][y] = 0
@@ -61,7 +61,7 @@ res.sort()
 print(len(res))
 for x in res :
     print(x)
-'''
+
 # BFS로 풀어보기
 from collections import deque
 n = int(input())

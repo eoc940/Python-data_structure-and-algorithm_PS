@@ -24,3 +24,4 @@ def DFS(vertex) :
 check[1] = 1
 DFS(1)
 print(cnt)
+
