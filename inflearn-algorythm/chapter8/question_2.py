@@ -37,3 +37,5 @@ def DFS(len) :
 n = int(sys.stdin.readline())
 dy = [0]*(n+1)
 print(DFS(n))
+
+
