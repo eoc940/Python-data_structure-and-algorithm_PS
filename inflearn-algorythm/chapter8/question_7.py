@@ -19,5 +19,6 @@ for i in range(2, n+1) :
         if info[i][2] < info[j][2] and dy[j] > val :
             val = dy[j]
     dy[i] = val+info[i][1]
-
+print(info)
+print(dy)
 print(max(dy))
