@@ -12,3 +12,6 @@ par = ["marina", "josipa", "nikola", "vinko", "filipa"]
 com = ["josipa", "filipa", "marina", "nikola"]
 
 print(solution(par, com))
+
+
+
