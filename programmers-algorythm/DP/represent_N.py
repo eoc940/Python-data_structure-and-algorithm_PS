@@ -26,7 +26,7 @@ def solution(N, number):
 
     return answer
 
-print(solution(6,999))
+print(solution(5,12))
 
 
 

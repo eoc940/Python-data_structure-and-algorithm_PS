@@ -10,3 +10,4 @@ def factorial(num) :
 n = int(sys.stdin.readline().rstrip())
 
 print(factorial(n))
+
