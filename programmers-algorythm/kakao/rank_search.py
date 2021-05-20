@@ -1,35 +1,50 @@
 # 순위 검색
 
+from collections import defaultdict
+from itertools import combinations
+
 def solution(info, query):
     answer = []
-    info_list = []
-    query_list = []
-    # 리스트에 넣어주기
+    info_dict = defaultdict(list)
 
+    for i in range(len(info)) :
+        tmp = info[i].split(" ")
+        tmp_str, tmp_score = tmp[:-1], tmp[-1]
 
-    for x in info :
-        info_list.append(x.split(" "))
-    for x in query :
-        query_list.append(x.replace("and ", "").split(" "))
-    #print(info_list)
-    #print(query_list)
-    for q in query_list :
-        cnt = 0
-        for i in info_list :
-            if int(q[4]) > int(i[4]) :
-                continue
-            if q[0]!='-' and q[0] != i[0] :
-                continue
-            if q[1]!='-' and q[1] != i[1] :
-                continue
-            if q[2]!='-' and q[2] != i[2] :
-                continue
-            if q[3]!='-' and q[3] != i[3] :
-                continue
-            cnt += 1
-        answer.append(cnt)
+        for k in range(5) :
+            for combi in combinations(tmp_str, k) :
+                info_dict[''.join(combi)].append(int(tmp_score))
+    #print(info_dict)
 
+    # dict 반복문 돌릴때 .keys안 써도 key로 iterate된다
+    for keys in info_dict :
+        info_dict[keys].sort()
+    print(info_dict)
 
+    for q in query :
+        # and와 -를 제외시킴
+        tmp_q = q.replace(" and ", "").replace("-","")
+        tmp_q_str, tmp_q_score = tmp_q.split(" ")
+
+        tmp_q_score = int(tmp_q_score)
+
+        if tmp_q_str in info_dict :
+            scores = info_dict[tmp_q_str]
+
+            # 해당하는 키가 있다면, 즉 점수들이 들어있다면
+            if scores :
+                #print(scores, tmp_q_score)
+                start, end = 0, len(scores)
+                while start < end :
+                    mid = (start+end)//2
+                    if scores[mid] >= tmp_q_score:
+                        end = mid
+                    else :
+                        start = mid + 1
+                answer.append(len(scores) - start)
+
+        else :
+            answer.append(0)
 
     return answer
 
