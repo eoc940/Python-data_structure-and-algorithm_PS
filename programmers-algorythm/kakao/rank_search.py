@@ -19,7 +19,7 @@ def solution(info, query):
     # dict 반복문 돌릴때 .keys안 써도 key로 iterate된다
     for keys in info_dict :
         info_dict[keys].sort()
-    print(info_dict)
+    #print(info_dict)
 
     for q in query :
         # and와 -를 제외시킴
@@ -33,7 +33,7 @@ def solution(info, query):
 
             # 해당하는 키가 있다면, 즉 점수들이 들어있다면
             if scores :
-                #print(scores, tmp_q_score)
+
                 start, end = 0, len(scores)
                 while start < end :
                     mid = (start+end)//2
@@ -41,6 +41,7 @@ def solution(info, query):
                         end = mid
                     else :
                         start = mid + 1
+                print(scores, tmp_q_score, start)
                 answer.append(len(scores) - start)
 
         else :

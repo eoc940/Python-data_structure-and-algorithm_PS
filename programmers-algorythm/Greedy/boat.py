@@ -1,6 +1,5 @@
 # 구명보트
 
-
 def solution(people, limit):
     answer = 0
     # 정렬을 한다. 맨 앞, 맨 뒤 값을 비교할 것이기 때문
