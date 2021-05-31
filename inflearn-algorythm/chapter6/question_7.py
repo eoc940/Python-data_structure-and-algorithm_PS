@@ -5,6 +5,7 @@ import sys
 def DFS(v, sum) :
     global res
     # 최소의 v를 찾으므로 v가 res를 넘어가는 순간 return
+    print(v,sum,res)
     if v >= res :
         return
     if sum > tot :
