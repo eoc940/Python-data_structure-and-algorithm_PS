@@ -1,4 +1,4 @@
-# 동전교환
+# 동전교환(DFS)
 
 import sys
 n = int(sys.stdin.readline())
