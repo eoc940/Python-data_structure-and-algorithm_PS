@@ -1,5 +1,5 @@
 # 미로탐색(DFS)
-
+'''
 def DFS(x, y) :
     global cnt
     if x==6 and y==6 :
@@ -27,9 +27,9 @@ dy = [0,1,0,-1]
 cnt = 0
 DFS(0,0)
 print(cnt)
-
-# 강사님 풀이
 '''
+# 강사님 풀이
+
 def DFS(x, y) :
     global cnt
     if x==6 and y==6 :
@@ -51,4 +51,4 @@ board[0][0] = 1
 cnt = 0
 DFS(0,0)
 print(cnt)
-'''
+
