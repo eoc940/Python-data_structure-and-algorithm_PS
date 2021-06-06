@@ -20,6 +20,7 @@ def dfs(x, y) :
                 way[xx][yy] = 0
 
 way = [list(map(int, sys.stdin.readline().split())) for _ in range(7)]
+print(way)
 cnt = 0
 dx = [-1,0,1,0]
 dy = [0,1,0,-1]
