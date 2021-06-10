@@ -18,19 +18,20 @@ for x in hei :
     if max(x) > _max :
         _max = max(x)
 
-# def bfs(x,y,height) :
-#     dq = deque()
-#     height[x][y] = 0
-#     dq.append((x,y))
-#     while dq :
-#         for _ in range(len(dq)) :
-#             tmp = dq.popleft()
-#             for i in range(4) :
-#                 xx = tmp[0] + dx[i]
-#                 yy = tmp[1] + dy[i]
-#                 if 0<=xx<n and 0<=yy<n and height[xx][yy] != 0:
-#                     height[xx][yy] = 0
-#                     dq.append((xx,yy))
+def bfs(x,y) :
+    dq = deque()
+    ch[x][y] = 1
+    dq.append((x, y))
+    while dq:
+        for _ in range(len(dq)):
+            tmp = dq.popleft()
+            for j in range(4):
+                xx = tmp[0] + dx[j]
+                yy = tmp[1] + dy[j]
+
+                if 0 <= xx < n and 0 <= yy < n and ch[xx][yy] == 0 and hei[xx][yy] >= i:
+                    ch[xx][yy] = 1
+                    dq.append((xx, yy))
 answer = 0
 
 for i in range(_min, _max) :
@@ -41,21 +42,7 @@ for i in range(_min, _max) :
         for b in range(n) :
             if hei[a][b] >= i and ch[a][b] == 0:
                 cnt += 1
-                dq = deque()
-                ch[a][b] = 1
-                dq.append((a,b))
-                while dq :
-                    for l in range(len(dq)) :
-                        tmp = dq.popleft()
-
-                        for j in range(4) :
-                            xx = tmp[0] + dx[j]
-                            yy = tmp[1] + dy[j]
-
-                            if 0<=xx<n and 0<=yy<n and ch[xx][yy]==0 and hei[xx][yy] >= i :
-
-                                ch[xx][yy] = 1
-                                dq.append((xx,yy))
+                bfs(a,b)
 
     if cnt > answer :
         answer = cnt
