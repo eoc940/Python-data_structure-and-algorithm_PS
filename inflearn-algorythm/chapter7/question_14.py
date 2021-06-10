@@ -1,5 +1,5 @@
 # 안전영역(BFS)
-'''
+
 from collections import deque
 n = int(input())
 a = [list(map(int, input().split())) for _ in range(n)]
@@ -38,10 +38,10 @@ for k in range(mini-1, maxi) : # 최소-1부터 최대-1까지 돈다(최대는 
         res = cnt
 
 print(res)
-'''
+
 
 # 강사님 풀이
-
+'''
 def DFS(x,y,h) :
     ch[x][y] = 1
     for i in range(4) :
@@ -68,5 +68,5 @@ for h in range(100) :
     if cnt==0:
         break
 print(res)
-
+'''
 
