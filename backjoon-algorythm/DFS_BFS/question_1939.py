@@ -11,7 +11,7 @@ connect = defaultdict(list)
 for st, en, wei in info:
     connect[st].append((en, wei))
     connect[en].append((st, wei))
-#print(connect)
+print(connect)
 
 def bfs(wei, st):
     dq = deque()
