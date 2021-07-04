@@ -1,59 +1,39 @@
 # 경주로 건설
 
+import sys
 from collections import deque
 
 def solution(board):
-    answer = float('inf')
-    dx = [0,1,0,-1]
-    dy = [1,0,-1,0]
-    dq = deque()
+    answer = sys.maxsize
+    direction = {0:[-1,0], 1:[0,1], 2:[1,0], 3:[0,-1]} # 0:북 1:동 2:남 3:서
     ch = [[float('inf')]*len(board) for _ in range(len(board))]
-    if board[0][1]==0:
-        dq.append((0,1,100,1))
-    if board[1][0]==0:
-        dq.append((1,0,100,0))
+    ch[0][0] = 0
+    dq = deque()
+    dq.append((0,0,0,1)) # x,y,total,direction
+    dq.append((0,0,0,2))
     while dq:
-        tmp = dq.popleft()
-        # print(tmp)
-        ch[tmp[0]][tmp[1]] = tmp[2]
-        if tmp[0]==len(board)-1 and tmp[1]==len(board)-1:
-            answer = min(answer, tmp[2])
-            continue
-            # print()
-            # print()
-            # print(answer)
-            # print()
-            # print()
-        else :
-            if tmp[2] >= answer :
-                continue
-        for i in range(4):
-            xx = tmp[0] + dx[i]
-            yy = tmp[1] + dy[i]
-            if 0<=xx<len(board) and 0<=yy<len(board) and board[xx][yy]==0:
-                if tmp[3]==1:
-                    if tmp[0]==xx:
-                        if tmp[2]+100 < ch[xx][yy] and tmp[2]+100 < answer:
-
-                            dq.append((xx,yy,tmp[2]+100,1))
-                    else:
-                        if tmp[2]+600 < ch[xx][yy] and tmp[2]+600 < answer:
-
-                            dq.append((xx,yy,tmp[2]+600,0))
-                else:
-                    if tmp[1]==yy:
-                        if tmp[2]+100 < ch[xx][yy] and tmp[2]+100 < answer:
-
-                            dq.append((xx,yy,tmp[2]+100,0))
-                    else:
-                        if tmp[2]+600 < ch[xx][yy] and tmp[2]+600 < answer:
-
-                            dq.append((xx,yy,tmp[2]+600,1))
+        x,y,total,direct = dq.popleft()
+        # print(x,y,total,direct)
+        if x==len(board)-1 and y==len(board)-1:
+            if total < answer :
+                answer = total
+        else:
+            for i in range(4):
+                xx = x + direction[i][0]
+                yy = y + direction[i][1]
+                if 0<=xx<len(board) and 0<=yy<len(board) and board[xx][yy]==0:
+                    if i != direct:
+                        tot = total + 600
+                    else :
+                        tot = total + 100
+                    if tot <= ch[xx][yy]:
+                        ch[xx][yy] = tot
+                        dq.append((xx,yy,tot,i))
 
     return answer
 
 board = [[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,1,0,0,0],[0,0,0,1,0,0,0,1],[0,0,1,0,0,0,1,0],[0,1,0,0,0,1,0,0],[1,0,0,0,0,0,0,0]]
-board = [[0, 0, 1, 0], [0, 0, 0, 0], [0, 1, 0, 1], [1, 0, 0, 0]]
+# board = [[0, 0, 1, 0], [0, 0, 0, 0], [0, 1, 0, 1], [1, 0, 0, 0]]
 print(solution(board))
 
 
