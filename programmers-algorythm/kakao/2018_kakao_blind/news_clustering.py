@@ -8,7 +8,7 @@ def solution(str1, str2):
     list_one = []
     list_two = []
     for i in range(len(str1)-1):
-        if str1[i:i+2].isalpha():
+        if str1[i:i+2].isalpha(): # 문자열 전체가 알파벳으로 구성되어 있는지 알려줌
             list_one.append(str1[i:i+2])
     for i in range(len(str2)-1):
         if str2[i:i+2].isalpha():
