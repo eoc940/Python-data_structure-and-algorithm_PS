@@ -1,6 +1,63 @@
 # 여행경로
 
 def solution(tickets):
+    answer = []
+
+    def dfs(L,st,en):
+        if L == len(tickets):
+            answer.append(tuple(tmp))
+            return
+        else:
+            for i,loca in enumerate(tickets):
+                if ch[i] == 0 and en == loca[0]:
+                    ch[i] = 1
+                    tmp.append(loca[1])
+                    dfs(L+1, loca[0], loca[1])
+                    tmp.pop()
+                    ch[i] = 0
+
+    tickets.sort(key=lambda x : (x[0],x[1]))
+    print(tickets)
+    ch = [0]*len(tickets)
+    tmp = []
+    for i,loca in enumerate(tickets):
+        if loca[0] == "ICN":
+            tmp.append(loca[0])
+            tmp.append(loca[1])
+            ch[i] = 1
+            dfs(1,loca[0],loca[1])
+            ch[i] = 0
+            tmp.pop()
+            tmp.pop()
+    print(answer)
+    return list(answer[0])
+
+
+tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
+print(solution(tickets))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+def solution(tickets):
 
     answer = []
     tmp = []
@@ -42,3 +99,4 @@ def solution(tickets):
 tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
 #tickets = [['ICN','GGG'],['ICN','YYY'],['YYY','ICN']]
 print(solution(tickets))
+'''
