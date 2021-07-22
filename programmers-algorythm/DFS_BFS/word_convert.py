@@ -1,5 +1,48 @@
 # 단어 변환
 
+def convert_possible(first, second):
+    cnt = 0
+    for i in range(len(first)):
+        if first[i] != second[i]: cnt += 1
+        if cnt > 1: return False
+    return True
+
+def solution(begin, target, words):
+    global answer
+    answer = []
+    cnt = 0
+    def dfs(word,cnt):
+        global answer
+        if word == target:
+            # answer = [], append해도 된다. 그러면 return에서 min해주자
+            answer.append(cnt)
+            # answer = 0, answer = cnt 해도 된다
+            return
+        else:
+            for idx,next in enumerate(words):
+                if ch[idx]==0 and convert_possible(word, next):
+                    ch[idx] = 1
+                    dfs(next,cnt+1)
+                    ch[idx] = 0
+
+    ch = [0]*len(words)
+    dfs(begin,0)
+    return answer
+
+begin = "hit"
+target = "cog"
+words = ["hot", "dot", "dog", "lot", "log", "cog"]
+print(solution(begin, target, words))
+
+
+
+
+
+
+
+
+'''
+
 def solution(begin, target, words):
     # 전역변수가 없을 때 함수 안에서 global을 써주면 전역변수가 된다
     global answer
@@ -46,5 +89,4 @@ w =["hot", "dot", "dog", "lot", "log", "cog"]
 
 print(solution(b,t,w))
 print(answer)
-
-
+'''
