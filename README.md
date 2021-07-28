@@ -151,8 +151,130 @@ if 0<x<20 :
     print("x는 0이상 20미만의 수다")
 ```
 
+###### 반복문
 
+- while 뒤에 조건이 들어감
+```
+i = 1
+result = 0
+while i <= 9:
+    result += i
+    i += 1
+print(result) -> 45 
+```
+- 무한 루프란 끊임없이 반복되는 반복 구문을 의미한다. 반복문을 작성 뒤 탈출 가능한지 확인해야 함
+```
+i = 10
+while i>5 :
+    print(i)
+```
+- for문의 구조는 특정한 변수를 이용하여 in 뒤에 오는 데이터에 포함되어 있는 원소를 첫 번째 인덱스부터 차례로 하나씩 반복된다
+```
+array = [9,8,7,6,5]
+for x in array:
+    print(x)
+```
+- for문에서 연속적인 값을 차례로 순회할 때는 range()를 주로 사용한다
+- 이때 range(시작, 끝 + 1) 형태로 사용한다
+```
+result = 0
+for i in range(1,10):
+    result += i
+print(result) -> 45
+```
+###### 함수
+- 내장 함수 : 파이썬이 기본적으로 제공하는 함수
+- 사용자 정의 함수 : 개발자가 직접 정의하여 사용할 수 있는 함수
+- 매개변수 : 함수 내부에서 사용할 변수, 반환 값 : 함수에서 처리된 결과를 반환
+```
+def 함수명(매개변수):
+    실행할 소스코드
+    return 반환 값
+```
+- 파라미터이 변수를 직접 지정할 수 있다. 매개변수의 순서가 달라도 상관없다
+```
+def add(a, b):
+    print('함수의 결과:', a + b)
+    
+add(b = 3, a = 7)
+```
 
+- global 키워드로 변수를 지정하면 해당 함수에서는 지역 변수를 만들지 않고, 함수 바깥에 선언된 변수를 바로 참조하게 된다
+```
+a = 0
+def func():
+    global a
+    a += 1
+
+for i in range(10):
+    func()
+    
+print(a) -> 10
+```
+
+- 파이썬에서 함수는 여러 개의 반환 값을 가질 수 있다
+```
+def operator(a,b):
+    plus = a + b
+    minus = a - b
+    return plus, minus
+
+c, d = operator(7,3)
+print(a,b,c,d) -> 7,3,10,4
+```
+- 람다 표현식 예시
+```
+list1 = [1,2,3,4,5]
+list2 = [6,7,8,9,10]
+result = map(lambda a,b : a+b, list1, list2)
+print(list(result)) -> [7,9,11,13,15]
+```
+
+###### 실전에서 유용한 표준 라이브러리
+- 내장 함수 : 기본 입출력 함수부터 정렬 함수까지 기본적인 함수들을 제공
+```
+# sum, min, max는 간단하니까 스킵
+
+# eval() -> 문자열 안의 연산을 수행
+result = eval("(3+5)*7")
+print(result) -> 56
+
+# sorted() with key
+array = [('a',3),('b',5),('c',1)]
+result = sorted(array, key = lambda x : x[1], reverse=True)
+print(result) -> [('b',5),('a',3),('c',1)]
+```
+- itertools : 반복되는 형태의 데이터를 처리하기 위한 기능 제공. 특히 순열과 조합 라이브러리 주로 사용됨
+```
+# 순열 : permutations
+# 조합 : combinations
+# 중복순열 : product
+# 중복조합 : combinations_with_replacement
+
+# Counter : 리스트와 같은 반복 가능한 객체가 주어졌을 때 내부의 원소가 몇 번씩 등작했는지 알려줌
+from collections import Counter
+counter = Counter(['red','blue','red','green','blue','blue'])
+print(counter['blue']) -> 3
+print(dict(counter)) -> {'red':2, 'blue':3, 'green':1}
+```
+- heapq : 힙 자료구조를 제공. 일반적으로 우선순위 큐 기능을 구현하기 위해 사용됨
+- bisect : 이진 탐색 기능을 제공
+- collections : deque, Counter 등의 유용한 자료구조를 포함
+- math : 필수적인 수학적 기능 제공. 팩토리얼, 제곱근, 최대공약수(GCD), 삼각함수 관련 함수부터 파이(pi)와 같은 상수를 포함
+```
+# 최대 공약수를 구한 때는 math 라이브러리의 gcd() 함수를 이용할 수 있다
+import math
+
+# 최소 공배수(lcm)를 구하는 함수
+def lcm(a,b):
+    return a * b // math.gcd(a,b)
+
+a = 21
+b = 14
+
+print(math.gcd(21,14)) # 최대 공약수 계산 -> 7
+print(lcm(21,14)) # 최소 공배수 계산 -> 42
+```
 
 
 
