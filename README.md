@@ -322,5 +322,44 @@ while True :
 cnt += n-1
 print(cnt)
 ```
+```
+# 곱하기 혹은 더하기(최대값 구하기)
+import sys
 
+num = sys.stdin.readline().rstrip()
+answer = int(num[0])
 
+for i in range(1, len(num)):
+    if answer <= 1 or int(num[i]) <= 1 :
+        answer += int(num[i])
+    else :
+        answer *= int(num[i])
+
+print(answer)
+```
+
+### 구현
+- 구현이란 머릿속에 있는 알고리즘을 소스코드로 바꾸는 과정이다
+- 풀이를 떠올리는 것은 쉽지만 소스코드로 옮기기 어려운 문제를 지칭한다
+- 알고리즘은 간단한데 코드가 지나칠 만큼 길어지는 문제
+- 실수 연산을 다루고 특정 소수점 자리까지 출력해야 하는 문제
+- 문자열을 특정한 기준에 따라서 끊어 처리해야 하는 문제
+- 적절한 라이브러리를 찾아서 사용해야 하는 문제
+
+```
+# 상하좌우 문제
+import sys
+
+n = int(sys.stdin.readline())
+direction_list = list(sys.stdin.readline().split())
+x, y = 1, 1
+
+go = {"R":(0,1), "U":(-1,0), "L":(0,-1), "D":(1,0)}
+for direction in direction_list:
+    dx, dy = go[direction]
+    if 1 <= x + dx <= n and 1 <= y + dy <= n :
+        x += dx
+        y += dy
+
+print(x, y)
+```
