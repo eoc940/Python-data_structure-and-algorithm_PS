@@ -461,4 +461,72 @@ print(answer)
     - 탐색 시작 노드를 큐에 삽입하고 방문 처리를 한다
     - 큐에서 노드를 꺼낸 뒤에 해당 노드의 인접 노드 중에서 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리한다
     - 더 이상 2번의 과정을 수행할 수 없을 때까지 반복한다
+```
+# 음료수 얼려 먹기
+
+import sys
+from collections import deque
+
+n,m = map(int, sys.stdin.readline().split())
+ices = [list(map(int, list(sys.stdin.readline().rstrip()))) for _ in range(n)]
+answer = 0
+dx = [-1,0,1,0]
+dy = [0,1,0,-1]
+
+def bfs(x,y):
+    global answer
+    dq = deque()
+    dq.append((x,y))
+    ices[x][y] = 1
+    while dq:
+        tx, ty = dq.popleft()
+        for i in range(4):
+            xx = tx + dx[i]
+            yy = ty + dy[i]
+            if 0<=xx<n and 0<=yy<m and ices[xx][yy] == 0:
+                ices[xx][yy] = 1
+                dq.append((xx,yy))
+    answer += 1
+
+for i in range(n):
+    for j in range(m):
+        if ices[i][j] == 0: bfs(i,j)
+
+print(answer)
+```
+```
+# 미로 탈출
+
+import sys
+from collections import deque
+
+n,m = map(int, sys.stdin.readline().split())
+maze = [list(map(int, list(sys.stdin.readline().rstrip()))) for _ in range(n)]
+answer = 0
+dx = [-1,0,1,0]
+dy = [0,1,0,-1]
+
+dq = deque()
+dq.append((0,0))
+
+
+while dq:
+    for _ in range(len(dq)):
+        tx, ty = dq.popleft()
+        if tx == n-1 and ty == m-1 :
+            answer = maze[tx][ty]
+            break
+        for i in range(4):
+            x = tx + dx[i]
+            y = ty + dy[i]
+            if 0<=x<n and 0<=y<m and maze[x][y]==1:
+                maze[x][y] = maze[tx][ty] + 1
+                dq.append((x,y))
+    for x in maze:
+        print(x)
+    print()
+
+print(answer)
+```
+
 
