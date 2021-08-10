@@ -17,7 +17,7 @@
 - [구현](./readme_texts/implementation.md)
 - [BFS/DFS, 스택/큐](./readme_texts/dfs_bfs.md)
 - [정렬](./readme_texts/sort.md)
-
+- [이진 탐색](./readme_texts/binary_search.md)
 
 
 
