@@ -18,6 +18,7 @@
 - [BFS/DFS, 스택/큐](./readme_texts/dfs_bfs.md)
 - [정렬](./readme_texts/sort.md)
 - [이진 탐색](./readme_texts/binary_search.md)
+- [다이나믹 프로그래밍](./readme_texts/dynamic_programming.md)
 
 
 
