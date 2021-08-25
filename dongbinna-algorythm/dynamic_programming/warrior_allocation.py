@@ -21,3 +21,8 @@ for i in range(1, len(power)):
         answer += 1
 print(answer)
 '''
+
+
+
+
+
