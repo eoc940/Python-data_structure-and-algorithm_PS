@@ -20,7 +20,7 @@
 - [이진 탐색](./readme_texts/binary_search.md)
 - [다이나믹 프로그래밍](./readme_texts/dynamic_programming.md)
 - [최단 경로 알고리즘](./readme_texts/shortest_route.md)
-
+- [기타 그래프 이론](./readme_texts/graph.md)
 
 
 
