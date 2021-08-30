@@ -16,7 +16,8 @@
 2. 모든 합집합(Union) 연산을 처리할 때까지 1번의 과정을 반복한다    
 
 - 처리할 연산들 : Union(1,4), Union(2,3), Union(2,4), Union(5,6)
-![img_2.png](img_2.png)
+![image](https://user-images.githubusercontent.com/67304980/131312865-88267c4c-cc93-41b5-bdf5-291fddbfb824.png)
+
 
 ```
 # 특정 원소가 속한 집합을 찾기
@@ -67,7 +68,8 @@ for i in range(1, v+1):
     - 다음과 같이 {1,2,3,4,5}의 총 5개의 원소가 존재하는 상황을 확인해보자
     - 수행된 연산들 : Union(4,5), Union(3,4), Union(2,3), Union(1,2)
     
-![img.png](img.png)
+![image](https://user-images.githubusercontent.com/67304980/131312928-00a5e6e4-ee2b-4c8b-ad50-7f686fe013d7.png)
+
    
 #### 서로소 집합 자료구조 : 경로 압축
 - 찾기(Find) 함수를 최적하하기 위한 방법으로 경로 압축(Path Compression)을 이용할 수 있다
@@ -86,8 +88,8 @@ def find_parent(parent, x)
 수행하면 다음과 같이 부모 테이블이 갱신된다
 - 기본적인 방법에 비하여 시간 복잡도가 개선된다
 
-![img_3.png](img_3.png)
-  ![img_4.png](img_4.png)
+![image](https://user-images.githubusercontent.com/67304980/131313005-4f4f4b1d-5c03-4b6b-8531-6160d3e901e7.png)
+
 
 ```
 # 특정 원소가 속한 집합을 찾기
@@ -143,7 +145,8 @@ for i in range(1, v+1):
 
 #### 서로소 집합을 활용한 사이클 판별 : 동작 과정 살펴보기
 - [초기 단계] 모든 노드에 대하여 자기 자신을 부모로 설정하는 형태로 부모 테이블을 초기화한다
-![img_5.png](img_5.png)
+![image](https://user-images.githubusercontent.com/67304980/131313069-ee5246c6-1a5f-4957-a215-b46a6062e370.png)
+
   
 ```
 # 특정 원소가 속한 집합을 찾기
@@ -192,15 +195,17 @@ else:
 #### 신장 트리
 - 그래프에서 모든 노드를 포함하면서 사이클이 존재하지 않는 부분 그래프를 의미한다
     - 모든 노드가 포함되어 서로 연결되면서 사이클이 존재하지 않는다는 조건은 트리의 조건이기도 하다
-      
-![img_6.png](img_6.png)
+ 
+ ![image](https://user-images.githubusercontent.com/67304980/131313127-69ce1411-a5f1-46de-9be8-c59225325997.png)
+
 
 ##### 최소 신장 트리
 - 최소한의 비용으로 구성되는 신장 트리를 찾아야 할 때 어떻게 해야 할까?
 - 예를 들어 N개의 도시가 존재하는 상황에서 두 도시 사이에 도로를 놓아 전체 도시가 서로 연결될 수 있게 도로를 설치하는 경우를 생각해 보자
     - 두 도시 A,B를 선택했을 때 A에서 B로 이동하는 경로가 반드시 존재하도록 도로를 설치한다
     
-![img_7.png](img_7.png)
+![image](https://user-images.githubusercontent.com/67304980/131313161-3d7638d4-3602-4b72-9bc8-6df1d0dfcc80.png)
+
 
 #### 크루스칼 알고리즘
 - 대표적인 최소 신장 트리 알고리즘이다
@@ -213,14 +218,16 @@ else:
     3. 모든 간선에 대하여 2번의 과정을 반복한다
 
 - [초기 단계] 그래프의 모든 간선 정보에 대하여 오름차순 정렬을 수행한다
-![img_8.png](img_8.png)
-  
-![img_9.png](img_9.png)
+![image](https://user-images.githubusercontent.com/67304980/131313221-e3c3cf02-8dc1-4c6e-b147-5da6a418b020.png)
+
+![image](https://user-images.githubusercontent.com/67304980/131313272-d4061d34-a813-4837-a4c4-4399e55d99ee.png)
+
 
 - [알고리즘 수행 결과]
     - 최소 신장 트리에 포함되어 있는 간선의 비용만 모두 더하면, 그 값이 최종 비용에 해당한다
     
-![img_10.png](img_10.png)
+![image](https://user-images.githubusercontent.com/67304980/131313314-4aa4f15c-2852-413a-afd4-70230608c5d4.png)
+
 
 ```
 # 특정 원소가 속한 집합을 찾기
@@ -281,7 +288,8 @@ print(result)
 #### 위상 정렬
 - 사이클이 없는 방향 그래프의 모든 노드를 방향성에 거스르지 않도록 순서대로 나열하는 것이다
 - 예시) 선수과목을 고려한 학습 순서 설정
-![img_11.png](img_11.png)
+![image](https://user-images.githubusercontent.com/67304980/131313363-e45fbc58-ec5f-469c-9ded-a61e9ee6e717.png)
+
   
 - 위 세 과목을 모두 듣기 위한 적절한 학습 순서는?
     - 자료구조 -> 알고리즘 -> 고급 알고리즘 (O)
@@ -290,7 +298,8 @@ print(result)
 ##### 진입차수와 진출차수
 - 진입차수(Indegree) : 특정한 노드로 들어오는 간선의 개수
 - 진출차수(Outdegree) : 특정한 노드에서 나가는 간선의 개수
-![img_12.png](img_12.png)
+![image](https://user-images.githubusercontent.com/67304980/131313450-6ba921e5-97dc-435d-81fd-3f55512612b5.png)
+
   
 #### 위상 정렬 알고리즘
 - 큐를 이용하는 위상 정렬 알고리즘의 동작 과정은 다음과 같다
@@ -305,9 +314,11 @@ print(result)
 - 위상 정렬을 수행할 그래프를 준비한다
     - 이때 그래프는 사이클이 없는 방향 그래프(DAG)여야 한다
       
-![img_14.png](img_14.png)
-![img_15.png](img_15.png)
-![img_16.png](img_16.png)
+![image](https://user-images.githubusercontent.com/67304980/131313497-5a28e920-b24e-43a3-b490-0b1fcaeda9f2.png)
+![image](https://user-images.githubusercontent.com/67304980/131313542-7a9c7a55-f2b9-48c1-b036-7369db26940f.png)
+![image](https://user-images.githubusercontent.com/67304980/131313568-684a97a8-aba4-42da-8b6a-6c896c7c2eec.png)
+
+
 
 #### 위상 정렬의 특징
 - 위상 정렬은 DAG에 대해서만 수행할 수 있다
