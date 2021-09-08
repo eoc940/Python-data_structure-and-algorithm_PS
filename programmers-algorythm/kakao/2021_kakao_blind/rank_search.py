@@ -14,12 +14,12 @@ def solution(info, query):
         for k in range(5) :
             for combi in combinations(tmp_str, k) :
                 info_dict[''.join(combi)].append(int(tmp_score))
-    #print(info_dict)
+    print(info_dict)
 
     # dict 반복문 돌릴때 .keys안 써도 key로 iterate된다
     for keys in info_dict :
         info_dict[keys].sort()
-    #print(info_dict)
+    print(info_dict)
 
     for q in query :
         # and와 -를 제외시킴
