@@ -16,4 +16,3 @@ def solution(skill, skill_trees):
 skill = "CBD"
 skill_trees = ["BACDE", "CBADF", "AECB", "BDA"]
 print(solution(skill, skill_trees))
-
