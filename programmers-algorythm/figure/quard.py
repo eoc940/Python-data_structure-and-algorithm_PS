@@ -1,6 +1,5 @@
 # 쿼드 압축 후 개수 세기
 
-
 def validate(x, y, leng, arr): # 4,0 이라고 가정
     li = []
     if arr[x][y] == -1: return -1
