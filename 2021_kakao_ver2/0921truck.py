@@ -3,7 +3,7 @@ import requests
 import random
 from truck import truck
 
-token = 'd72d58639ce36e6e9e83724eee6a6e89'
+token = '6b154219cc007981e972821fd831c9ab'
 url = 'https://kox947ka1a.execute-api.ap-northeast-2.amazonaws.com/prod/users'
 
 # 시나리오 1 기준, 시나리오 2일때는 값을 바꿔준다
@@ -87,29 +87,76 @@ def distance(location_id, truck):
 
 # { "truck_id": 0, "command": [2, 5, 4, 1, 6] }이런 형태 리턴
 def move(locations, tr):
+    max_dist = 0
+    right_up = -1
+    dest_lid = -1
 
-    if locations[tr.lid][0] >= AVG_BIKE:
-        locations[tr.lid][0] -= 1
-        tr.load()
-    elif locations[tr.lid][0] < AVG_BIKE-1:
-        locations[tr.lid][0] += 1
-        tr.land()
-    while len(tr.command) < 10:
-        direction = random.randrange(1, 5)
-        if direction == 1:
-            tr.up()
-        elif direction == 2:
-            tr.down()
-        elif direction == 3:
-            tr.right()
-        elif direction == 4:
-            tr.left()
+    for lid, bike_and_check in locations.items():
+        bike, check = bike_and_check
+        if bike < AVG_BIKE and not check :
+            tmp_right_up , dist = distance(lid, tr)
+            if dist > max_dist and dist <= 8:
+                max_dist = dist
+                right_up = tmp_right_up
+                dest_lid = lid
+    if dest_lid != -1:
+        locations[dest_lid][1] = True
+    # print(tr.lid, dest_lid, tr.bike)
+
+    def load_land():
         if locations[tr.lid][0] >= AVG_BIKE:
-            locations[tr.lid][0] -= 1
-            tr.load()
-        elif locations[tr.lid][0] < AVG_BIKE - 1:
-            locations[tr.lid][0] += 1
-            tr.land()
+            half = random.randrange(1,3)
+            if half == 1:
+                locations[tr.lid][0] -= 1
+                tr.load()
+        elif locations[tr.lid][0] < AVG_BIKE:
+            for _ in range(AVG_BIKE - locations[tr.lid][0]):
+                locations[tr.lid][0] += 1
+                tr.land()
+    if right_up != -1:
+
+        load_land()
+        right, up = right_up
+        if right > 0:
+            for _ in range(right):
+                tr.right()
+                load_land()
+        else:
+            for _ in range(-right):
+                tr.left()
+                load_land()
+        if up > 0:
+            for _ in range(up):
+                tr.up()
+                load_land()
+        else:
+            for _ in range(-up):
+                tr.down()
+                load_land()
+
+    # print(tr.lid, dest_lid, tr.command[:10])
+    # if locations[tr.lid][0] >= AVG_BIKE:
+    #     locations[tr.lid][0] -= 1
+    #     tr.load()
+    # elif locations[tr.lid][0] < AVG_BIKE-1:
+    #     locations[tr.lid][0] += 1
+    #     tr.land()
+    # while len(tr.command) < 10:
+    #     direction = random.randrange(1, 5)
+    #     if direction == 1:
+    #         tr.up()
+    #     elif direction == 2:
+    #         tr.down()
+    #     elif direction == 3:
+    #         tr.right()
+    #     elif direction == 4:
+    #         tr.left()
+    #     if locations[tr.lid][0] >= AVG_BIKE:
+    #         locations[tr.lid][0] -= 1
+    #         tr.load()
+    #     elif locations[tr.lid][0] < AVG_BIKE - 1:
+    #         locations[tr.lid][0] += 1
+    #         tr.land()
 
     return {"truck_id": tr.tid, "command": tr.command[:10]}
 
